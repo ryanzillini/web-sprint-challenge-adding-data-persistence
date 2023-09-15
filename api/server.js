@@ -4,6 +4,8 @@ const express = require("express");
 
 const server = express();
 const projectsRouter = require("./project/router");
+// const resourcesRouter = require("./resource/router");
+// const taskRouter = require("./task/router");
 
 server.use(express.json());
 
