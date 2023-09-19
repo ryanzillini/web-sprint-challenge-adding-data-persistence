@@ -6,6 +6,11 @@ async function getAll() {
   return rows;
 }
 
+async function getById(resource_id) {
+  const resource = await db("resources").where("resource_id", resource_id);
+  return resource;
+}
+
 function insert(resource) {
   const newPost = db("resources")
     .insert(resource)
@@ -14,11 +19,6 @@ function insert(resource) {
     });
 
   return newPost;
-}
-
-async function getById(resource_id) {
-  const resource = await db("resources").where("resource_id", resource_id);
-  return resource;
 }
 
 module.exports = {

@@ -8,13 +8,14 @@ router.get("/", async (req, res, next) => {
   next();
 });
 
-// router.post("/", async (req, res, next) => {
-//     const newPost = {
-//       resource_name: req.body.resource_name,
-//       resource_description: req.body.resource_description,
-//     };
-
-// });
+router.post("/", async (req, res, next) => {
+  const newPost = req.body;
+  await Resources.insert(newPost)
+    .then((resource) => {
+      res.status(202).json(resource);
+    })
+    .catch(next);
+});
 
 router.use((err, req, res, next) => {
   res.status(500).json({
